@@ -1,0 +1,104 @@
+table 'Sales Pipeline'
+	lineageTag: b1bbb42e-581c-465f-9d23-b08f880a922e
+
+	column Opportunity_id
+		dataType: string
+		lineageTag: c0fe3d91-2575-4e57-b5f5-562afe7c6955
+		summarizeBy: none
+		sourceColumn: Opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_agent
+		dataType: string
+		lineageTag: 0fffc02c-fed3-4216-8142-5e01e47d83e0
+		summarizeBy: none
+		sourceColumn: Sales_agent
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: 76ff6c8c-2910-46a5-8e5f-1eb0a1c4ff37
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: a294bd3a-c70a-4c32-a4ce-68238b574631
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Deal_stage
+		dataType: string
+		lineageTag: e05f79d4-9285-4528-ad51-520b9de80c56
+		summarizeBy: none
+		sourceColumn: Deal_stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column Engage_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bc03feab-4dc4-4670-b6a1-c00c61cde590
+		summarizeBy: none
+		sourceColumn: Engage_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Close_date
+		dataType: dateTime
+		formatString: m/d/yyyy
+		lineageTag: 51bed484-fa0a-4d2f-a7f3-a49e8d6ca82c
+		summarizeBy: none
+		sourceColumn: Close_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Close_value
+		dataType: int64
+		formatString: 0
+		lineageTag: 45792dad-f8d2-4cde-8508-74ed47d481e0
+		summarizeBy: sum
+		sourceColumn: Close_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Deals Duration' = DATEDIFF('Sales Pipeline'[Engage_date],'Sales Pipeline'[Close_date],DAY)
+		formatString: 0
+		lineageTag: 7514a82f-dd34-40c1-9b40-d7996aaa809c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales Pipeline' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("F:\data c\Data Analysis Projects Files\My Projects (Excel - Power bi)\CRM & Sales Analytisc\CRM+Sales+Opportunities\sales_pipeline.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"opportunity_id", type text}, {"sales_agent", type text}, {"product", type text}, {"account", type text}, {"deal_stage", type text}, {"engage_date", type date}, {"close_date", type date}, {"close_value", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each true),
+				    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows","",null,Replacer.ReplaceValue,{"account"}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Replaced Value",{{"account", Text.Trim, type text}, {"product", Text.Trim, type text}, {"sales_agent", Text.Trim, type text}}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Trimmed Text",null,"Unknown",Replacer.ReplaceValue,{"account"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Replaced Value1",{{"engage_date", "Engage_date"}, {"close_date", "Close_date"}, {"close_value", "Close_value"}, {"deal_stage", "Deal_stage"}, {"account", "Account"}, {"product", "Product"}, {"sales_agent", "Sales_agent"}, {"opportunity_id", "Opportunity_id"}}),
+				    #"Trimmed Text1" = Table.TransformColumns(#"Renamed Columns",{{"Deal_stage", Text.Trim, type text}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Trimmed Text1", each true)
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

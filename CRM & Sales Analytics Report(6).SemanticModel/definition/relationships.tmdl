@@ -1,0 +1,16 @@
+relationship a1aa9b21-d7aa-a379-1684-e2590a267c05
+	fromColumn: 'Sales Pipeline'.Sales_agent
+	toColumn: 'Sales Team'.Sales_agent
+
+relationship 15ac662c-0a9e-58e9-9a2e-05cfe652fbdf
+	fromColumn: 'Sales Pipeline'.Account
+	toColumn: Accounts.Account
+
+relationship e4b930f4-024d-4004-8550-ea9043adfb7f
+	fromColumn: 'Sales Pipeline'.Product
+	toColumn: Products.Product
+
+relationship 2e215426-3e20-9384-a6d1-1d1e1b438dcf
+	fromColumn: 'Sales Pipeline'.Engage_date
+	toColumn: Calender.Date
+

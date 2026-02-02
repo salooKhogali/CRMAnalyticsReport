@@ -1,0 +1,173 @@
+table 'All Measures'
+	lineageTag: 390804dc-4013-4ec4-96cc-7446805220bc
+
+	measure 'Pipeline Count' =
+			CALCULATE(
+			    COUNT('Sales Pipeline'[Opportunity_id]),
+			    KEEPFILTERS('Sales Pipeline'[Deal_stage] IN {"Engaging", "Prospecting"})) +0
+		formatString: 0
+		lineageTag: a5c58099-151a-4031-b3e2-5db059f5b696
+
+	measure 'Total Opportunities' = COUNT('Sales Pipeline'[Opportunity_id])
+		formatString: 0
+		lineageTag: 29dfc301-f00a-4b38-a71a-02ea44bd667b
+
+	measure 'Total Sales' = SUM('Sales Pipeline'[Close_value]) +0
+		formatString: 0
+		lineageTag: e1326461-ae23-4c88-a640-7b6c9e39f5c2
+
+	measure 'Win Rate %' = DIVIDE([Won Deals],[Total Opportunities],0)
+		formatString: 0%;-0%;0%
+		lineageTag: 9d9330fb-a18f-46db-8d07-abdae51de8e6
+
+	measure 'Won Deals' = CALCULATE([Total Opportunities],'Sales Pipeline'[Deal_stage]="Won")
+		formatString: 0
+		lineageTag: 6004bbaa-ff55-42b3-92ea-0ac80ca48087
+
+	measure 'Lost Deals' = CALCULATE([Total Opportunities],'Sales Pipeline'[Deal_stage]="Lost")
+		formatString: 0
+		lineageTag: 94861cc9-6919-4340-bd7f-590f7cbfda4e
+
+	measure 'Lost Rate %' = DIVIDE([Lost Deals],[Total Opportunities],0)
+		formatString: 0%;-0%;0%
+		lineageTag: 1f921272-2d65-4fef-afa5-1590e8f2a126
+
+	measure 'Median Sales Cycle' = ```
+			
+			 MEDIANX(
+			    FILTER('Sales Pipeline','Sales Pipeline'[Deal_stage]="Won"),
+			    DATEDIFF('Sales Pipeline'[Engage_date],'Sales Pipeline'[Close_date],DAY))
+			```
+		lineageTag: fea7bf56-9031-46c7-b67f-3b65fa73bf64
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Sales Cycle' = ```
+			
+			 AVERAGEX(
+			    FILTER('Sales Pipeline','Sales Pipeline'[Deal_stage]="Won"),
+			    DATEDIFF('Sales Pipeline'[Engage_date],'Sales Pipeline'[Close_date],DAY))
+			```
+		lineageTag: 85fd089b-85fe-47d6-aa1c-0c4e482198c6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Cycle MoM' = ```
+			
+			VAR CurrentMonth = [Median Sales Cycle]
+			VAR Previous =
+			    CALCULATE(
+			        [Median Sales Cycle],
+			        PREVIOUSMONTH('Calender'[Date])
+			    )
+			RETURN
+			
+			    CurrentMonth - Previous
+			
+			
+			```
+		formatString: 0
+		lineageTag: ed9ebf0b-9bdf-44f6-ba22-7f68e602b8c5
+
+	measure 'Pipeline Velocity' = ```
+			
+			
+			DIVIDE(
+			    [Pipeline Count]* [Avg Sales] * [Win Rate %],
+			    [Median Sales Cycle]
+			)
+			
+			```
+		formatString: 0
+		lineageTag: bc8c06f5-8acf-4048-82a8-ff683ce5afc5
+
+	measure 'Avg Sales' = AVERAGE('Sales Pipeline'[Close_value])
+		formatString: 0.0
+		lineageTag: bc5baff1-766e-4f33-aa36-d2d7b6d54655
+
+	measure 'Pipeline Value (Estimated)' =
+			
+			SUMX(
+			    FILTER(
+			        'Sales Pipeline',
+			        'Sales Pipeline'[Deal_stage] IN {"Engaging", "Prospecting"}
+			    ),
+			    RELATED('Products'[Sales Price])
+			)
+		formatString: #,0
+		lineageTag: 968681de-1d7f-4153-bb2b-b491be2df3ed
+
+	measure 'Total Sales YoY Growth %' =
+			
+			VAR CurrentSales = [Total Sales]
+			VAR PreviousYearSales = CALCULATE([Total Sales], SAMEPERIODLASTYEAR('Calender'[Date]))
+			RETURN
+			DIVIDE(CurrentSales - PreviousYearSales, PreviousYearSales, 0)
+		lineageTag: 59e05f5e-cae0-40c3-bb47-f6a5e7cebd40
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Won Deal Size' =
+			
+			CALCULATE(
+			    AVERAGE('Sales Pipeline'[Close_value]),
+			    'Sales Pipeline'[Deal_stage] = "Won"
+			)
+		formatString: 0.0
+		lineageTag: 4198df3f-acef-4664-bde6-c3cc171420c1
+
+	measure 'Overdue Deals' = ```
+			
+			VAR DealDate = SELECTEDVALUE('Sales Pipeline'[Close_date])
+			VAR DealStatus = SELECTEDVALUE('Sales Pipeline'[Deal_stage])
+			RETURN
+			IF(
+			    DealStatus IN {"Engaging", "Prospecting"} && 
+			    YEAR(DealDate) <= 2017, 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: e53793c9-b0a0-428c-9ad2-47ac25d5721e
+
+	measure 'Average Deal Duration' = AVERAGE('Sales Pipeline'[Deals Duration])
+		formatString: 0
+		lineageTag: f86d6461-d32a-4a97-a5f2-fe456b97bf79
+
+	measure 'Total Close Value' = ```
+			
+			CALCULATE(
+			    SUM('Sales Pipeline'[Close_value]),
+			    'Sales Pipeline'[Deal_stage] = "Won"
+			)
+			
+			```
+		lineageTag: 750e0ccb-1661-43df-b510-08fe5eb3a076
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 4ce3fa17-f25c-4a6e-8d38-6e6561bbddb3
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'All Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

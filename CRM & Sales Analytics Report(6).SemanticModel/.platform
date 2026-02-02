@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CRM & Sales Analytics Report(6)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "74ee9bee-d25b-424a-b12d-d1c1243fe275"
+  }
+}

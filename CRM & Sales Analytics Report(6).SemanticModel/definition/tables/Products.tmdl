@@ -1,0 +1,48 @@
+table Products
+	lineageTag: 006ec963-f201-4b51-a3d6-597913907a31
+
+	measure 'Average Price' = AVERAGE(Products[Sales Price])
+		formatString: #,0
+		lineageTag: 63781774-2863-45b9-8df5-e55b2ac8545e
+
+	column Product
+		dataType: string
+		lineageTag: 27d2c358-0d13-4ada-a4d2-8e6db2fb1f26
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Series
+		dataType: string
+		lineageTag: e0aefdc9-2084-4700-b429-cbbba76232a0
+		summarizeBy: none
+		sourceColumn: Series
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Price'
+		dataType: decimal
+		formatString: 0
+		lineageTag: a5e1cddb-f396-4f54-ba00-73217e103237
+		summarizeBy: none
+		sourceColumn: Sales Price
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("F:\data c\Data Analysis Projects Files\My Projects (Excel - Power bi)\CRM & Sales Analytisc\CRM+Sales+Opportunities\products.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product", type text}, {"series", type text}, {"sales_price", Currency.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"product", "Product"}, {"series", "Series"}, {"sales_price", "Sales Price"}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Renamed Columns",{{"Series", Text.Trim, type text}})
+				in
+				    #"Trimmed Text"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

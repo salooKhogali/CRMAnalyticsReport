@@ -1,0 +1,137 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.1.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY25SU10",
+      "reportVersionAtImport": {
+        "visual": "2.1.0",
+        "report": "3.0.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "BBED0A4D4D8D44CE93CF2DAFADEE466C",
+    "SimpleWaterfall",
+    "lollipopChart50393786178B4137A75F3257CB590B96",
+    "lollipopBarChart29115F0ADEDB437DBCDF8E8A3E66E088",
+    "maps",
+    "googleMapsPbiVisual2982D2C8868A4D07BE77AE3D0F9F87C3"
+  ],
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY25SU10",
+          "path": "BaseThemes/CY25SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "magic_vectoe2804710935245651.png",
+          "path": "magic_vectoe2804710935245651.png",
+          "type": "Image"
+        },
+        {
+          "name": "speedometer_vector010253182638443548.png",
+          "path": "speedometer_vector010253182638443548.png",
+          "type": "Image"
+        },
+        {
+          "name": "win_vector8920088645891746.png",
+          "path": "win_vector8920088645891746.png",
+          "type": "Image"
+        },
+        {
+          "name": "handshake_vector3590941214830181.png",
+          "path": "handshake_vector3590941214830181.png",
+          "type": "Image"
+        },
+        {
+          "name": "money_icon05678921798961145.png",
+          "path": "money_icon05678921798961145.png",
+          "type": "Image"
+        },
+        {
+          "name": "Vector_(7)02203816704926298.png",
+          "path": "Vector_(7)02203816704926298.png",
+          "type": "Image"
+        },
+        {
+          "name": "Vector_(6)31308553643649717.png",
+          "path": "Vector_(6)31308553643649717.png",
+          "type": "Image"
+        },
+        {
+          "name": "Xvector7630036585933677.png",
+          "path": "Xvector7630036585933677.png",
+          "type": "Image"
+        },
+        {
+          "name": "Frame_(17)6611819561956153.png",
+          "path": "Frame_(17)6611819561956153.png",
+          "type": "Image"
+        },
+        {
+          "name": "Vector_(8)5581222050460899.png",
+          "path": "Vector_(8)5581222050460899.png",
+          "type": "Image"
+        },
+        {
+          "name": "Frame9083777577487039.png",
+          "path": "Frame9083777577487039.png",
+          "type": "Image"
+        },
+        {
+          "name": "Frame_(1)4597786285521229.png",
+          "path": "Frame_(1)4597786285521229.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

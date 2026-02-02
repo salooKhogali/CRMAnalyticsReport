@@ -1,0 +1,14 @@
+expression 'Data dictionary' =
+		let
+		    Source = Csv.Document(File.Contents("F:\data c\Data Analysis Projects Files\My Projects (Excel - Power bi)\CRM & Sales Analytisc\CRM+Sales+Opportunities\data_dictionary.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Table", type text}, {"Field", type text}, {"Description", type text}})
+		in
+		    #"Changed Type1"
+	lineageTag: c02d3201-5c2e-43fa-97e5-7f37cbb84a39
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

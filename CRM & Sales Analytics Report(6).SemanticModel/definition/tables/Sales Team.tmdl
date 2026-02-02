@@ -1,0 +1,44 @@
+table 'Sales Team'
+	lineageTag: 87d34e55-7279-4d2e-b492-b604d166acb6
+
+	column Sales_agent
+		dataType: string
+		lineageTag: 9fee78ab-3b20-49ac-b0d4-444e891bc14b
+		summarizeBy: none
+		sourceColumn: Sales_agent
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manager
+		dataType: string
+		lineageTag: d51f8ba5-af2a-40a9-a9fa-9576a10e0321
+		summarizeBy: none
+		sourceColumn: Manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column Regional_office
+		dataType: string
+		lineageTag: 98ee886e-3e92-453e-94db-cc1097e66240
+		summarizeBy: none
+		sourceColumn: Regional_office
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales Team' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("F:\data c\Data Analysis Projects Files\My Projects (Excel - Power bi)\CRM & Sales Analytisc\CRM+Sales+Opportunities\sales_teams.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"sales_agent", type text}, {"manager", type text}, {"regional_office", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"sales_agent", "Sales_agent"}, {"manager", "Manager"}, {"regional_office", "Regional_office"}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Renamed Columns",{{"Sales_agent", Text.Trim, type text}})
+				in
+				    #"Trimmed Text"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

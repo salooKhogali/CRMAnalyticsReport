@@ -1,0 +1,85 @@
+table Calender
+	lineageTag: 127e2a32-ff8b-4435-9e5c-562d9e1a964b
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: Short Date
+		lineageTag: 05214a89-d1c9-4484-86ef-f942e773e7b6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 376fd38c-4dab-4e33-9b6f-0d904759fa81
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: a6ec43c3-e542-4762-aa10-f65c28ace1e8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: 'Month No'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month No'
+		formatString: 0
+		lineageTag: 51b3633b-ba27-46b0-898e-6553f7ac21ae
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month No]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 1bc9d5cc-d140-4557-84c5-3642371ee4b0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Date Hierarchy'
+		lineageTag: ddbf1357-6f2c-499b-aadb-325869fdc876
+
+		level Date
+			lineageTag: 8eb79913-dcd7-4b80-b422-e98aeb4606ab
+			column: Date
+
+		level Year
+			lineageTag: 8585ab3f-8486-4ab8-84ce-654b10b3676d
+			column: Year
+
+		level Quarter
+			lineageTag: 7b0f8ba8-30e2-4932-af19-2b87bb100271
+			column: Quarter
+
+		level Month
+			lineageTag: 25a2bdc6-afcf-4dfa-b621-28d89f2c526d
+			column: Month
+
+		level 'Month No'
+			lineageTag: a538c16b-0d19-49e3-a85b-5d8983ac9c37
+			column: 'Month No'
+
+	partition Calender = calculated
+		mode: import
+		source =
+				ADDCOLUMNS(
+				    CALENDAR(min('Sales Pipeline'[Engage_date]),MAX('Sales Pipeline'[Close_date])),
+				    "Year",YEAR([Date]),
+				    "Month",FORMAT([Date],"MMM"),
+				    "Month No",MONTH([Date]),
+				    "Quarter","Q"&QUARTER([Date])
+				    )
+
+	annotation PBI_Id = 9a57d59f9c4b456994e7e64bc19d094a
+

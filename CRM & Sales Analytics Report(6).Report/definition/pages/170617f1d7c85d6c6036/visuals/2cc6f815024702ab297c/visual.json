@@ -1,0 +1,463 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "2cc6f815024702ab297c",
+  "position": {
+    "x": 111.66666666666667,
+    "y": 200,
+    "z": 13000,
+    "height": 223.33333333333334,
+    "width": 528.33333333333337,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "lollipopChart50393786178B4137A75F3257CB590B96",
+    "query": {
+      "queryState": {
+        "category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales Team"
+                    }
+                  },
+                  "Property": "Manager"
+                }
+              },
+              "queryRef": "Sales Team.Manager",
+              "nativeQueryRef": "Manager",
+              "active": true
+            }
+          ]
+        },
+        "subCategory": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales Team"
+                    }
+                  },
+                  "Property": "Sales_agent"
+                }
+              },
+              "queryRef": "Sales Team.Sales_agent",
+              "nativeQueryRef": "Sales_agent"
+            }
+          ]
+        },
+        "measure": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Pipeline Velocity"
+                }
+              },
+              "queryRef": "All Measures.Pipeline Velocity",
+              "nativeQueryRef": "Pipeline Velocity"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "legendTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sales_agent'"
+                }
+              }
+            },
+            "isLegendAutoChanged": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "markerConfig": [
+        {
+          "properties": {
+            "markerSettings": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"markerType\":\"chart\",\"markerStyleType\":\"marker1Style\",\"marker1Style\":{\"isAutoMarkerSize\":true,\"markerSize\":20,\"markerShape\":\"default\",\"markerChart\":\"pie\",\"markerShapePath\":\"\",\"markerShapeBase64Url\":\"\",\"dropdownMarkerType\":\"circle\",\"isShowMarkerOutline\":true,\"outlineWidth\":1,\"outlineColor\":\"rgba(128, 128, 128, 1)\",\"sameOutlineAsMarkerColor\":true,\"showOutlineOnly\":false},\"marker2Style\":{\"isAutoMarkerSize\":true,\"markerSize\":20,\"markerShape\":\"default\",\"markerChart\":\"donut\",\"markerShapePath\":\"\",\"markerShapeBase64Url\":\"\",\"dropdownMarkerType\":\"circle\",\"isShowMarkerOutline\":true,\"outlineWidth\":1,\"outlineColor\":\"rgba(128, 128, 128, 1)\",\"sameOutlineAsMarkerColor\":true,\"showOutlineOnly\":false},\"isAutoLollipopTypePie\":true,\"isAutoLollipopTypeImage\":false}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "templatesConfig": [
+        {
+          "properties": {
+            "templatesSettings": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"isIBCSEnabled\":false,\"isTemplatesEnabled\":false,\"selectedTemplate\":\"defaultTemplate\",\"templateSchema\":{\"brushAndZoomAreaSettings\":{},\"chartSettings\":{\"lollipopInnerPadding\":30,\"isHasSubCategories\":false,\"orientation\":\"vertical\",\"isAutoLollipopWidth\":true,\"isLollipopDistanceChange\":false,\"isShowZeroBaseLine\":true,\"zeroBaseLineColor\":\"rgba(211, 211, 211, 1)\",\"zeroBaseLineSize\":1,\"showConnectingLine\":false,\"connectingLineColor\":\"rgba(0, 0, 0, 1)\",\"connectingLineWidth\":1,\"connectingLineStyle\":\"dotted\",\"isIBCSEnabled\":false,\"isResetInIBCSPressed\":false},\"cutAndClipAxisSettings\":{},\"dataColorsSettings\":{\"fillMin\":\"rgba(186, 72, 239, 1)\",\"fillMid\":\"rgba(127, 88, 246, 1)\",\"fillMax\":\"rgba(75, 132, 244, 1)\",\"isAddMidColor\":true,\"fillType\":\"single\",\"isFillTypeChanged\":true,\"singleColor1\":\"rgba(86, 161, 255, 1)\",\"singleColor2\":\"rgba(156, 195, 213, 1)\",\"gradientColors\":[\"rgba(186, 72, 239, 1)\",\"rgba(127, 88, 246, 1)\",\"rgba(75, 132, 244, 1)\"],\"categoryColors\":[],\"numberOfClasses\":8,\"schemeColors\":[\"rgb(22,142,230)\",\"rgb(43,167,255)\",\"rgb(73,178,255)\",\"rgb(102,189,255)\",\"rgb(128,200,255)\",\"rgb(153,211,255)\",\"rgb(179,222,255)\",\"rgb(204,233,255)\"],\"colorBlindSafe\":false,\"colorScheme\":\"Blue\",\"reverse\":false,\"isGradient\":true,\"negativeColor\":\"rgba(229, 51, 39, 1)\",\"positiveColor\":\"rgba(141, 200, 61, 1)\",\"gradientAppliedToMeasure\":\"marker1Color\",\"isCustomizeOthersColor\":true,\"othersColor\":\"rgba(84, 84, 84, 1)\"},\"dataLabelsSettings\":{\"show\":true,\"isShowBestFitLabels\":true,\"measure1\":{\"color\":\"rgba(93, 93, 93, 1)\",\"borderColor\":\"rgba(255, 255, 255,1)\",\"borderWidth\":1,\"orientation\":\"horizontal\",\"placement\":\"outside\",\"fontSize\":12,\"fontFamily\":\"\\\"Segoe UI\\\", wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"showBackground\":false,\"backgroundColor\":\"rgba(93, 93, 93, 1)\",\"fontStyle\":[],\"isAutoFontSize\":true,\"showLabelsBelowReferenceLine\":false,\"isColorChanged\":false,\"textColorTypes\":\"contrast\",\"applyFor\":\"only patterns\",\"isShowBGChangedWhenPatternApplied\":false,\"isTextColorTypeChanged\":false,\"isShowBackgroundChange\":false,\"customLabel\":\"\",\"displayType\":\"first-last-min-max\"},\"measure2\":{\"color\":\"rgba(93, 93, 93, 1)\",\"borderColor\":\"rgba(255, 255, 255,1)\",\"borderWidth\":1,\"orientation\":\"horizontal\",\"placement\":\"outside\",\"fontSize\":12,\"fontFamily\":\"\\\"Segoe UI\\\", wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"showBackground\":false,\"backgroundColor\":\"rgba(93, 93, 93, 1)\",\"fontStyle\":[],\"isAutoFontSize\":true,\"showLabelsBelowReferenceLine\":false,\"isColorChanged\":false,\"textColorTypes\":\"contrast\",\"applyFor\":\"only patterns\",\"isShowBGChangedWhenPatternApplied\":false,\"isTextColorTypeChanged\":false,\"isShowBackgroundChange\":false,\"customLabel\":\"\",\"displayType\":\"first-last-min-max\"}},\"dynamicDeviationSettings\":{},\"errorBarsSettings\":{},\"gridLinesSettings\":{\"xGridLines\":{\"show\":false,\"lineType\":\"dotted\",\"lineWidth\":1,\"lineColor\":\"rgba(151,151,151,1)\"},\"yGridLines\":{\"show\":true,\"lineType\":\"dotted\",\"lineWidth\":1,\"lineColor\":\"rgba(151,151,151,1)\"}},\"lineSettings\":{\"show\":true,\"lineType\":\"solid\",\"lineWidth\":4,\"lineColor\":\"rgba(128, 128, 128, 1)\",\"isApplyMarkerColor\":false},\"markerSettings\":{\"markerType\":\"shape\",\"markerStyleType\":\"marker1Style\",\"marker1Style\":{\"isAutoMarkerSize\":false,\"markerSize\":20,\"markerShape\":\"default\",\"markerChart\":\"donut\",\"markerShapePath\":\"\",\"markerShapeBase64Url\":\"\",\"dropdownMarkerType\":\"circle\",\"isShowMarkerOutline\":true,\"outlineWidth\":1,\"outlineColor\":\"rgba(128, 128, 128, 1)\",\"sameOutlineAsMarkerColor\":true,\"showOutlineOnly\":false},\"marker2Style\":{\"isAutoMarkerSize\":false,\"markerSize\":20,\"markerShape\":\"default\",\"markerChart\":\"donut\",\"markerShapePath\":\"\",\"markerShapeBase64Url\":\"\",\"dropdownMarkerType\":\"circle\",\"isShowMarkerOutline\":true,\"outlineWidth\":1,\"outlineColor\":\"rgba(128, 128, 128, 1)\",\"sameOutlineAsMarkerColor\":true,\"showOutlineOnly\":false},\"isAutoLollipopTypePie\":false,\"isAutoLollipopTypeImage\":false},\"patternSettings\":{},\"raceChartSettings\":{},\"rankingSettings\":{\"category\":{\"enabled\":true,\"rankingType\":\"topN\",\"count\":12,\"showRemainingAsOthers\":false,\"suffix\":\"none\",\"calcMethod\":\"sum\"},\"subCategory\":{\"enabled\":true,\"rankingType\":\"topN\",\"count\":10,\"showRemainingAsOthers\":false,\"othersColor\":\"rgba(84, 84, 84, 1)\"},\"smallMultiples\":{\"enabled\":true,\"rankingType\":\"topN\",\"count\":10,\"showRemainingAsOthers\":false,\"suffix\":\"none\",\"calcMethod\":\"sum\"},\"raceChartData\":{\"enabled\":true,\"rankingType\":\"topN\",\"count\":20,\"showRemainingAsOthers\":false,\"suffix\":\"none\",\"calcMethod\":\"sum\"}},\"referenceLinesSettings\":{},\"showBucket\":{},\"smallMultiplesSettings\":{},\"sorting\":{\"category\":{\"enabled\":true,\"sortBy\":\"Sum of Sales\",\"sortOrder\":\"2\",\"isSortByCategory\":false,\"isSortByMeasure\":true,\"isSortByMultiMeasure\":false,\"isSortByExtraSortField\":false},\"subCategory\":{\"enabled\":true,\"sortBy\":\"Sum of Sales\",\"sortOrder\":\"2\",\"isSortByCategory\":true,\"isSortByMeasure\":false,\"isSortByMultiMeasure\":false,\"isSortByExtraSortField\":false}},\"xAxisSettings\":{\"show\":true,\"position\":\"bottom\",\"isLogarithmScale\":false,\"isDisplayTitle\":true,\"titleName\":\"\",\"titleColor\":\"rgba(84, 84, 84, 1)\",\"titleFontSize\":13,\"titleFontFamily\":\"\\\"Segoe UI\\\", wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"titleStyling\":[\"bold\"],\"isDisplayLabel\":true,\"labelColor\":\"rgba(84, 84, 84, 1)\",\"labelFontFamily\":\"\\\"Segoe UI\\\", wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"labelFontSize\":12,\"isLabelAutoTilt\":true,\"labelTilt\":0,\"labelCharLimit\":20,\"labelStyling\":[],\"isShowAxisLine\":false,\"axisLineColor\":\"rgba(84, 84, 84, 1)\",\"isLabelAutoCharLimit\":true,\"categoryType\":\"categorical\",\"isMaximumRangeEnabled\":false,\"maximumRange\":0,\"isMinimumRangeEnabled\":false,\"minimumRange\":0,\"isInvertRange\":false,\"isAutoDateFormat\":true,\"dateFormat\":\"dddd, MMMM DD, YYYY\",\"customDateFormat\":\"dddd, MMMM DD, YYYY\",\"numberFormatting\":{\"show\":true,\"valueType\":\"absolute\",\"decimalSeparator\":\".\",\"thousandsSeparator\":\",\",\"decimalPlaces\":0,\"scaling\":\"auto\",\"prefix\":\"\",\"suffix\":\"\",\"scalingLabel\":false,\"thousandScalingLabel\":\"K\",\"millionScalingLabel\":\"M\",\"billionScalingLabel\":\"B\",\"trillionScalingLabel\":\"T\"}},\"yAxisSettings\":{\"show\":true,\"position\":\"left\",\"isLogarithmScale\":false,\"isDisplayTitle\":true,\"titleName\":\"\",\"titleColor\":\"rgba(84, 84, 84, 1)\",\"titleFontSize\":13,\"titleFontFamily\":\"\\\"Segoe UI\\\", wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"titleStyling\":[\"bold\"],\"isDisplayLabel\":true,\"labelColor\":\"rgba(84, 84, 84, 1)\",\"labelFontFamily\":\"\\\"Segoe UI\\\", wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"labelFontSize\":12,\"labelCharLimit\":20,\"labelStyling\":[],\"isShowLabelsAboveLine\":false,\"isShowAxisLine\":false,\"axisLineColor\":\"rgba(84, 84, 84, 1)\",\"isLabelAutoCharLimit\":true,\"categoryType\":\"categorical\",\"isMaximumRangeEnabled\":false,\"maximumRange\":0,\"isMinimumRangeEnabled\":false,\"minimumRange\":0,\"isInvertRange\":false,\"isAutoDateFormat\":true,\"dateFormat\":\"dddd, MMMM DD, YYYY\",\"customDateFormat\":\"dddd, MMMM DD, YYYY\",\"numberFormatting\":{\"show\":true,\"valueType\":\"absolute\",\"decimalSeparator\":\".\",\"thousandsSeparator\":\",\",\"decimalPlaces\":0,\"scaling\":\"auto\",\"prefix\":\"\",\"suffix\":\"\",\"scalingLabel\":false,\"thousandScalingLabel\":\"K\",\"millionScalingLabel\":\"M\",\"billionScalingLabel\":\"B\",\"trillionScalingLabel\":\"T\"}}}}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataLabelsConfig": [
+        {
+          "properties": {
+            "dataLabelsSettings": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"show\":true,\"isShowBestFitLabels\":true,\"measure1\":{\"color\":\"rgba(93, 93, 93, 1)\",\"borderColor\":\"rgba(255, 255, 255,1)\",\"borderWidth\":1,\"orientation\":\"horizontal\",\"placement\":\"outside\",\"fontSize\":12,\"fontFamily\":\"\\\"Segoe UI\\\", wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"showBackground\":false,\"backgroundColor\":\"rgba(93, 93, 93, 1)\",\"fontStyle\":[],\"isAutoFontSize\":true,\"showLabelsBelowReferenceLine\":false,\"isColorChanged\":false,\"textColorTypes\":\"contrast\",\"applyFor\":\"only patterns\",\"isShowBGChangedWhenPatternApplied\":false,\"isTextColorTypeChanged\":false,\"isShowBackgroundChange\":false,\"customLabel\":\"\",\"displayType\":\"all\"},\"measure2\":{\"color\":\"rgba(93, 93, 93, 1)\",\"borderColor\":\"rgba(255, 255, 255,1)\",\"borderWidth\":1,\"orientation\":\"horizontal\",\"placement\":\"outside\",\"fontSize\":12,\"fontFamily\":\"\\\"Segoe UI\\\", wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"showBackground\":false,\"backgroundColor\":\"rgba(93, 93, 93, 1)\",\"fontStyle\":[],\"isAutoFontSize\":true,\"showLabelsBelowReferenceLine\":false,\"isColorChanged\":false,\"textColorTypes\":\"contrast\",\"applyFor\":\"only patterns\",\"isShowBGChangedWhenPatternApplied\":false,\"isTextColorTypeChanged\":false,\"isShowBackgroundChange\":false,\"customLabel\":\"\",\"displayType\":\"first-last-min-max\"}}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "chartConfig": [
+        {
+          "properties": {
+            "chartSettings": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"lollipopInnerPadding\":30,\"isHasSubCategories\":false,\"orientation\":\"vertical\",\"isAutoLollipopWidth\":true,\"isLollipopDistanceChange\":false,\"isShowZeroBaseLine\":true,\"zeroBaseLineColor\":\"rgba(211, 211, 211, 1)\",\"zeroBaseLineSize\":1,\"showConnectingLine\":false,\"connectingLineColor\":\"rgba(0, 0, 0, 1)\",\"connectingLineWidth\":1,\"connectingLineStyle\":\"dotted\",\"isResetInIBCSPressed\":false}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataColorsConfig": [
+        {
+          "properties": {
+            "dataColorsSettings": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"fillMin\":\"rgba(186, 72, 239, 1)\",\"fillMid\":\"rgba(127, 88, 246, 1)\",\"fillMax\":\"rgba(75, 132, 244, 1)\",\"isAddMidColor\":true,\"fillType\":\"sequential\",\"isFillTypeChanged\":true,\"singleColor1\":\"rgba(0, 99, 178, 1)\",\"singleColor2\":\"rgba(156, 195, 213, 1)\",\"gradientColors\":[\"rgba(186, 72, 239, 1)\",\"rgba(127, 88, 246, 1)\",\"rgba(75, 132, 244, 1)\"],\"categoryColors\":[],\"subCategoryColors\":[{\"name\":\"Zane Levy\",\"marker\":\"rgb(165,215,167)\"},{\"name\":\"Vicki Laflamme\",\"marker\":\"rgb(150,206,153)\"},{\"name\":\"Reed Clapper\",\"marker\":\"rgb(136,198,139)\"},{\"name\":\"Kary Hendrixson\",\"marker\":\"rgb(122,191,125)\"},{\"name\":\"James Ascencio\",\"marker\":\"rgb(108,183,111)\"},{\"name\":\"Donn Cantrell\",\"marker\":\"rgb(94,175,97)\"},{\"name\":\"Darcel Schlecht\",\"marker\":\"rgb(79,167,83)\"},{\"name\":\"Daniell Hammack\",\"marker\":\"rgb(65,159,69)\"},{\"name\":\"Corliss Cosme\",\"marker\":\"rgb(51,151,55)\"},{\"name\":\"Cassey Cress\",\"marker\":\"rgb(36,142,41)\"}],\"numberOfClasses\":8,\"schemeColors\":[\"rgb(179,222,255)\",\"rgb(153,211,255)\",\"rgb(128,200,255)\",\"rgb(102,189,255)\",\"rgb(73,178,255)\",\"rgb(43,167,255)\",\"rgb(22,142,230)\",\"rgb(0,116,204)\"],\"colorBlindSafe\":false,\"colorScheme\":\"Blue\",\"reverse\":false,\"isGradient\":true,\"negativeColor\":\"rgba(229, 51, 39, 1)\",\"positiveColor\":\"rgba(141, 200, 61, 1)\",\"gradientAppliedToMeasure\":\"marker1Color\",\"categoryOthersColor\":\"rgba(84, 84, 84, 1)\",\"isCustomizeCategoryOthersColor\":true,\"subcategoryOthersColor\":\"rgba(84, 84, 84, 1)\",\"isCustomizeSubcategoryOthersColor\":true,\"isCustomizeSMOthersColor\":true,\"SMOthersColor\":\"rgba(84, 84, 84, 1)\"}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "brushAndZoomAreaConfig": [
+        {
+          "properties": {
+            "brushAndZoomAreaSettings": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"enabled\":false,\"minLollipopCount\":10,\"isShowAxis\":false,\"trackBackgroundColor\":\"rgba(225, 225, 225, 0.5)\",\"selectionTrackBackgroundColor\":\"rgba(0, 0, 0, 0.2)\",\"selectionTrackBorderColor\":\"rgba(225, 225, 225, 1)\",\"isAutoWidth\":true,\"isAutoHeight\":false,\"height\":40,\"enable\":false,\"width\":0}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "footer": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualGeneralSettings": [
+        {
+          "properties": {
+            "advancedSettingsToggle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "annotationsToggle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "summaryTableToggle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Velocity Vs Manager'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0F172A'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d38b230a702e631d48b3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Sales Team"
+              }
+            },
+            "Property": "Sales_agent"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "s",
+                        "Entity": "Sales Team",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "a",
+                        "Entity": "All Measures",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "s"
+                            }
+                          },
+                          "Property": "Sales_agent"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "a"
+                              }
+                            },
+                            "Property": "Total Sales"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 10
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "s",
+              "Entity": "Sales Team",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "s"
+                          }
+                        },
+                        "Property": "Sales_agent"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
